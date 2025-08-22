@@ -118,3 +118,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .touch-device {
+    @media (hover: none) {
+      .group:active .touch-show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}

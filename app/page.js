@@ -1,4 +1,3 @@
-
 "use client"
 import Image from "next/image";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
@@ -41,20 +40,27 @@ export default function Home() {
       {/* Removed colored shapes for a clean black background */}
 
       {/* Navigation */}
-      <nav className="relative z-10 flex items-center justify-between px-8 py-6">
+      <nav className="relative z-10 flex flex-col md:flex-row items-center justify-between px-4 md:px-8 py-4 md:py-6">
         {/* Logo Section */}
-        <div className="flex items-center space-x-2">
-          <div className="relative" style={{ width: "174px", height: "70 px" }} >
+        <div className="flex items-center justify-center w-full md:w-auto mb-4 md:mb-0">
+          <div className="relative" style={{ width: "174px", height: "70px" }}>
             <img
-              src="/BlackCoffer_Logo.png" // replace with your logo path
+              src="/BlackCoffer_Logo.png"
               alt="Blackcoffer Logo"
               className="w-full h-full object-contain invert"
             />
           </div>
         </div>
 
+        {/* Mobile Menu Button */}
+        <button className="md:hidden absolute right-4 top-6">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
         {/* Navbar Links */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
           <div className="flex items-center space-x-1 cursor-pointer hover:text-white transition-colors">
             <span>Who we are</span>
             <ChevronDown className="w-4 h-4" />
@@ -73,10 +79,10 @@ export default function Home() {
           </div>
         </div>
 
-
-        <div className="flex items-center space-x-4">
+        {/* Contact Section */}
+        <div className="flex items-center space-x-4 mt-4 md:mt-0">
           <Search className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-          <button className="flex items-center space-x-2 border border-white bg-white/10 px-4 py-2 rounded-lg transition-colors">
+          <button className="flex items-center space-x-2 border border-white bg-white/10 px-3 md:px-4 py-2 rounded-lg transition-colors text-sm md:text-base">
             <Phone className="w-4 h-4" />
             <span>Contact Us</span>
           </button>
@@ -84,22 +90,20 @@ export default function Home() {
       </nav>
 
       {/* Main Content */}
-      <div className="relative z-10 flex mt-[-50px] items-center min-h-[calc(100vh-120px)] px-8">
-        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 flex flex-col md:flex-row mt-4 md:mt-[-50px] items-center min-h-[calc(100vh-120px)] px-4 md:px-8">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
           {/* Left side - Main heading */}
-          <div className="">
-            <div>
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight ">
-                TOGETHER WE
-                <br />
-                <span className="text-white lg:pl-[140px]">
-                  REINVENTED
-                </span>
-              </h1>
-            </div>
+          <div className="text-center md:text-left">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight">
+              TOGETHER WE
+              <br />
+              <span className="text-white md:pl-[140px]">
+                REINVENTED
+              </span>
+            </h1>
 
             {/* Services link */}
-            <div className="mt-2 lg:mt-3 lg:pt-[120px] lg:pl-[35px] max-md:hidden">
+            <div className="mt-2 lg:mt-3 lg:pt-[120px] hidden md:block">
               <a href="#services" className="text-lg hover:text-white text-xl lg:text-2xl transition-colors cursor-pointer">
                 Services
               </a>
@@ -107,22 +111,23 @@ export default function Home() {
           </div>
 
           {/* Right side - Description */}
-          <div className="space-y-6 mt-[-70px] max-md:pt-[40px] ">
+          <div className="space-y-6 mt-6 md:mt-[-70px]">
             <Image
               src="/Rectangle 1.png"
               alt="Reinvented"
               width={80}
               height={9}
-              className="w-80px h-9px object-cover mb-6 md:mb-5 md:rounded-none md:w-[80px] md:h-[9px] lg:w-[80px] lg:h-[9px] lg:rounded-none ml-[75px]"
+              className="mx-auto md:ml-[75px] w-[80px] h-[9px] object-cover"
               priority
             />
-            <p className="text-md  md:text-xl md:leading-9 text-gray-200 lg:pl-[80px] lg:w-[560px]">
-              <span className="text-white font-semibold ">Together, we can reinvent your business. Reinvention is about breaking industry norms. Our wide range of capabilities, ecosystem partnerships and unmatched industry expertise can help your business become the next best version of itself. .</span>
+            <p className="text-md md:text-xl md:leading-9 text-gray-200 text-center md:text-left md:pl-[80px] md:w-[560px]">
+              <span className="text-white font-semibold">
+                Together, we can reinvent your business. Reinvention is about breaking industry norms. Our wide range of capabilities, ecosystem partnerships and unmatched industry expertise can help your business become the next best version of itself. .</span>
             </p>
 
 
             {/* CTA: simple text below paragraph */}
-            <p className="pt-4  lg:pl-[80px] ">
+            <p className="pt-4 lg:pl-[80px]">
               <a href="services" className="text-gray-300 hover:text-white inline-flex items-center justify-center gap-2"
                 style={{
                   fontFamily: "Inter, sans-serif",
@@ -155,17 +160,16 @@ export default function Home() {
       {/* Cards grid section */}
       <section
         id="services"
-        className="relative z-10 px-8 pb-6 -mt-10 sm:-mt-12 lg:-mt-20 max-w-7xl mx-auto scroll-mt-24"
+        className="relative z-10 px-4 md:px-8 pb-6 -mt-10 sm:-mt-12 lg:-mt-20 max-w-7xl mx-auto scroll-mt-24"
       >
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 justify-center">
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 place-items-center">
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className="relative w-[290px] h-[350px] overflow-hidden bg-gray-800 group cursor-pointer transition-all duration-300"
-              style={{ left: "-1px" }}
+              className="relative w-full sm:w-[290px] h-[350px] overflow-hidden bg-gray-800 group/card"
             >
-              {/* Background Image - Hides on hover */}
-              <div className="absolute inset-0 overflow-hidden transition-opacity duration-500 group-hover:opacity-0">
+              {/* Background Image */}
+              <div className="absolute inset-0 overflow-hidden transition-all duration-500 group-hover/card:opacity-0 group-focus/card:opacity-0">
                 <Image
                   src={card.image}
                   alt={card.title}
@@ -178,46 +182,77 @@ export default function Home() {
 
               {/* Content */}
               <div className="relative h-full flex flex-col p-6">
-                {/* Title - Always visible at top */}
-                <h3 className="text-xl font-semibold text-white text-left mb-4">
+                {/* Title */}
+                <h3 className="text-xl font-semibold text-white text-left mb-4 relative z-10">
                   {card.title}
                 </h3>
 
-                {/* Hover Content */}
-                <div className="flex-1 flex flex-col justify-center items-center overflow-visible">
-                  <div className="w-full opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-full group-hover:translate-x-0">
+                {/* Content Container */}
+                <div className="flex-1 flex flex-col justify-center items-center">
+                  {/* Description */}
+                  <div 
+                    className="w-full transform transition-all duration-500 
+                      opacity-0 translate-x-full 
+                      group-hover/card:opacity-100 group-hover/card:translate-x-0
+                      group-focus/card:opacity-100 group-focus/card:translate-x-0
+                      sm:group-hover/card:opacity-100 sm:group-hover/card:translate-x-0"
+                  >
                     <p className="text-white text-base text-left w-full mb-6 leading-relaxed">
-                      {card.title} services tailored to your business needs with our expert solutions. Our team provides comprehensive solutions to help your business grow.
+                      {card.title} services tailored to your business needs with our expert solutions. 
+                      Our team provides comprehensive solutions to help your business grow.
                     </p>
                   </div>
-                  <div className="w-full mt-auto opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-8 group-hover:translate-y-0 delay-100">
+
+                  {/* Expand button */}
+                  <div 
+                    className="w-full mt-auto transform transition-all duration-500 
+                      opacity-0 translate-y-8
+                      group-hover/card:opacity-100 group-hover/card:translate-y-0
+                      group-focus/card:opacity-100 group-focus/card:translate-y-0
+                      sm:group-hover/card:opacity-100 sm:group-hover/card:translate-y-0
+                      delay-100"
+                  >
                     <div className="flex justify-end">
-                      <button className="flex items-center gap-1 text-white text-sm font-medium hover:gap-2 transition-all duration-300 group px-3 py-1.5">
+                      <button 
+                        className="flex items-center gap-1 text-white text-sm 
+                          font-medium hover:gap-2 transition-all duration-300 
+                          group/button px-3 py-1.5"
+                      >
                         <span>Expand</span>
-                        <span className="inline-block group-hover:translate-x-1 transition-transform duration-300 "> {">"}</span>
+                        <span className="inline-block group-hover/button:translate-x-1 transition-transform duration-300">
+                          {">"}
+                        </span>
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* Overlay */}
+              <div 
+                className="absolute inset-0 bg-black/60 opacity-0 
+                  transition-opacity duration-500
+                  group-hover/card:opacity-100
+                  group-focus/card:opacity-100"
+              />
             </div>
           ))}
         </div>
       </section>
 
       {/* Stats section */}
-      <section className="relative z-10 px-8 py-16 max-w-7xl mx-auto">
+      <section className="relative z-10 px-4 md:px-8 py-8 md:py-16 max-w-7xl mx-auto">
         <p className="text-gray-400 mb-2 text-xl">The reason why Blackcoffer stands out</p>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-8">Blackcoffer Unfolds Solutions To Everything</h2>
 
-        <div className="relative rounded-3xl h-[600px] w-full overflow-hidden border border-white/10">
+        <div className="relative rounded-3xl h-[400px] md:h-[600px] w-full overflow-hidden border border-white/10">
           {/* Background image covering entire container */}
           <Image
             src="/group.png"
             alt="Background human and logo"
             fill
-            sizes="100vw"
-            className="object-cover object-center lg:object-right rounded-3xl"
+            sizes="(min-width: 768px) 100vw, 100vw"
+            className="object-cover object-center md:object-right rounded-3xl"
             priority={false}
           />
           {/* Gradient overlay for contrast: darker on left, lighter on right */}
@@ -359,45 +394,20 @@ export default function Home() {
 
 
       {/* Success Stories */}
-      <section className="relative z-10 px-8 pb-20 max-w-7xl mx-auto  mt-[30px]">
-        <div className="flex items-center justify-between mb-8">
-          <h2
-            className="font-semibold"
-            style={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 600,
-              fontSize: "50px",
-              lineHeight: "100%",
-              letterSpacing: "0px",
-              width: "390px",
-              height: "61px",
-            }}
-          >
+      <section className="relative z-10 px-4 md:px-8 pb-12 md:pb-20 max-w-7xl mx-auto mt-[30px]">
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between mb-8">
+          <h2 className="text-3xl md:text-5xl font-semibold mb-4 md:mb-0">
             Success Stories
           </h2>
-          <a href="#" className="text-gray-300 hover:text-white inline-flex items-center justify-center gap-2"
-            style={{
-              fontFamily: "Inter, sans-serif",
-              fontWeight: 500,
-              fontSize: "20px",
-              fontStyle: "medium",
-              lineHeight: "100%",
-              letterSpacing: "0px",
-              width: "182px",
-              height: "30px",
-              whiteSpace: "nowrap",
-            }}
-          >
+          <a href="#" className="text-gray-300 hover:text-white inline-flex items-center justify-center gap-2 text-base md:text-xl">
             Read all stories
             <Image
               src="/Frame 86.png"
               alt="arrow"
               width={24}
               height={24}
-              className="object-contain p-[2px] gap-[10px]"
-
+              className="object-contain"
             />
-
           </a>
         </div>
 
@@ -562,75 +572,68 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/10">
-        <div className="max-w-[1800px] mx-auto px-8 py-12 flex justify-between">
-          {/* Left side content with proper spacing */}
-          <div className="flex gap-20 pt-15"> {/* Added pt-8 for top padding */}
-            {/* About Us section */}
-            <div className="space-y-6"> {/* Increased space-y-3 to space-y-6 */}
-              <h4 className="text-gray-400 font-normal text-[20px] leading-[100%]">
-                About us
-              </h4>
-              <ul className="space-y-4"> {/* Increased space-y-2 to space-y-4 */}
-                <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">About Founder</a></li>
-                <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Contact us</a></li>
-                <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Team</a></li>
-                <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Locations</a></li>
-              </ul>
-            </div>
+        <div className="max-w-[1800px] mx-auto px-4 md:px-8 py-8 md:py-12">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-20">
+            {/* Left side content */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-20">
+              {/* About Us section */}
+              <div className="space-y-4 md:space-y-6">
+                <h4 className="text-gray-400 font-normal text-lg md:text-[20px] leading-[100%]">
+                  About us
+                </h4>
+                <ul className="space-y-3 md:space-y-4">
+                  <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">About Founder</a></li>
+                  <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Contact us</a></li>
+                  <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Team</a></li>
+                  <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Locations</a></li>
+                </ul>
+              </div>
 
-            {/* FAQ section */}
-            <div className="space-y-6"> {/* Increased space-y-3 to space-y-6 */}
-              <h4 className="text-gray-400 font-normal text-[20px] leading-[100%]">
-                FAQ
-              </h4>
-              <ul className="space-y-4"> {/* Increased space-y-2 to space-y-4 */}
-                <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Terms & Conditions</a></li>
-                <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Careers</a></li>
-                <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Solutions</a></li>
-                <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Our Process</a></li>
-              </ul>
-            </div>
+              {/* FAQ section */}
+              <div className="space-y-4 md:space-y-6">
+                <h4 className="text-gray-400 font-normal text-lg md:text-[20px] leading-[100%]">
+                  FAQ
+                </h4>
+                <ul className="space-y-3 md:space-y-4">
+                  <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Terms & Conditions</a></li>
+                  <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Careers</a></li>
+                  <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Solutions</a></li>
+                  <li><a href="#" className="text-[20px] text-gray-300 hover:text-white">Our Process</a></li>
+                </ul>
+              </div>
 
-            {/* Get In Touch section */}
-            <div className="space-y-6"> {/* Increased space-y-4 to space-y-6 */}
-              <h4 className="text-gray-400 font-normal text-[20px] leading-[100%]">
-                Get In Touch
-              </h4>
-              <p className="text-[20px] text-gray-300 max-w-[260px] leading-[28px]">
-                Taking seamless key performance indicators offline to maximise the long tail.
-              </p>
-              <div className="flex items-center gap-4 pt-2"> {/* Added pt-2 for slight top padding */}
-                <a href="#" className="w-10 h-10">
-                  <img src="/image 18.png" alt="Facebook" className="w-full h-full object-contain" />
-                </a>
-                <a href="#" className="w-10 h-10">
-                  <img src="/image 19.png" alt="YouTube" className="w-full h-full object-contain" />
-                </a>
-                <a href="#" className="w-10 h-10">
-                  <img src="/image 20.png" alt="LinkedIn" className="w-full h-full object-contain" />
-                </a>
-                <a href="#" className="w-10 h-10">
-                  <img src="/image 22.png" alt="Twitter" className="w-full h-full object-contain" />
-                </a>
+              {/* Get In Touch section */}
+              <div className="space-y-4 md:space-y-6 col-span-2 md:col-span-1">
+                <h4 className="text-gray-400 font-normal text-lg md:text-[20px] leading-[100%]">
+                  Get In Touch
+                </h4>
+                <p className="text-base md:text-[20px] text-gray-300 max-w-[260px] leading-[24px] md:leading-[28px]">
+                  Taking seamless key performance indicators offline to maximise the long tail.
+                </p>
+                {/* Social icons */}
+                <div className="flex items-center gap-4">
+                  <a href="#" className="w-10 h-10">
+                    <img src="/image 18.png" alt="Facebook" className="w-full h-full object-contain" />
+                  </a>
+                  <a href="#" className="w-10 h-10">
+                    <img src="/image 19.png" alt="YouTube" className="w-full h-full object-contain" />
+                  </a>
+                  <a href="#" className="w-10 h-10">
+                    <img src="/image 20.png" alt="LinkedIn" className="w-full h-full object-contain" />
+                  </a>
+                  <a href="#" className="w-10 h-10">
+                    <img src="/image 22.png" alt="Twitter" className="w-full h-full object-contain" />
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Technology Vector animation - Responsive */}
-          <div className="relative mt-12 lg:mt-0">
-            <div className="hidden lg:block">
+            {/* Technology Vector */}
+            <div className="hidden md:block">
               <img
                 src="/Technology Vector icon animation.gif"
                 alt="Tech"
-                className="w-[300px] h-[200px] xl:w-[500px] xl:h-[280px] 2xl:w-[700px] 2xl:h-[380px] object-contain 2xl:-mr-[200px] xl:-mr-[100px] -mr-[100px]"
-              />
-            </div>
-            {/* Mobile/Tablet version */}
-            <div className="lg:hidden flex justify-center">
-              <img
-                src="/Technology Vector icon animation.gif"
-                alt="Tech"
-                className="w-[250px] h-[180px] sm:w-[300px] sm:h-[200px] object-contain"
+                className="w-[300px] h-[200px] xl:w-[500px] xl:h-[280px] 2xl:w-[700px] 2xl:h-[380px] object-contain"
               />
             </div>
           </div>
